@@ -2,3 +2,5 @@ Videos:
 
 Package principal, modelo, vista, controlador:
 210: Acceso a BBDD JDBC X. Modelo Vista Controlador I => Ejecuta_MVC.java, Marco_Aplicacion_MVC.java
+211: Acceso a BBDD JDBC XI. Modelo Vista Controlador II => Productos.java, Conexion.java, Carga_Secciones.java
+212: Acceso a BBDD JDBC XII. Modelo Vista Controlador III => Carga_Secciones.java
