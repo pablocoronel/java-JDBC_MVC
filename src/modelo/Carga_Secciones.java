@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Carga_Secciones {
 	private Conexion mi_conexion;
-	private ResultSet rs;
+	public ResultSet rs;
 
 	public Carga_Secciones() {
 		this.mi_conexion = new Conexion();
@@ -24,7 +24,6 @@ public class Carga_Secciones {
 				mi_producto = new Productos();
 
 				mi_producto.setSeccion(rs.getString(1));
-
 				return mi_producto.getSeccion();
 			}
 

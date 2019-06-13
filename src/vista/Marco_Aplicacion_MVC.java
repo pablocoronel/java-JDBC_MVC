@@ -1,11 +1,11 @@
 package vista;
 
 import java.awt.*;
-
 import javax.swing.*;
+import controlador.*;
 
 public class Marco_Aplicacion_MVC extends JFrame {
-	private JComboBox<String> secciones;
+	public JComboBox<String> secciones;
 	private JComboBox<String> paises;
 	private JTextArea resultado;
 
@@ -48,8 +48,13 @@ public class Marco_Aplicacion_MVC extends JFrame {
 		add(resultado, BorderLayout.CENTER);
 
 		JButton botonConsulta = new JButton("Consulta");
-		
+
 		add(botonConsulta, BorderLayout.SOUTH);
+
+		/**
+		 * a la escucha
+		 */
+		addWindowListener(new Controlador_Carga_Secciones(this));
 	}
 
 }
