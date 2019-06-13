@@ -1,0 +1,4 @@
+Videos:
+
+Package principal, modelo, vista, controlador:
+210: Acceso a BBDD JDBC X. Modelo Vista Controlador I => Ejecuta_MVC.java, Marco_Aplicacion_MVC.java
