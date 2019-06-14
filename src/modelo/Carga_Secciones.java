@@ -10,29 +10,33 @@ public class Carga_Secciones {
 		this.mi_conexion = new Conexion();
 	}
 
-	public String ejecuta_consultas() {
-		Productos mi_producto = null;
+	// PROFE
+	/*
+	 * public String ejecuta_consultas() { Productos mi_producto = null;
+	 * 
+	 * Connection acceso_BBDD = mi_conexion.getConexion();
+	 * 
+	 * try { Statement secciones = acceso_BBDD.createStatement();
+	 * 
+	 * rs = secciones.executeQuery("SELECT DISTINCT SECCIÓN FROM productos");
+	 * 
+	 * mi_producto = new Productos(); mi_producto.setSeccion(rs.getString(1));
+	 * 
+	 * rs.close(); } catch (Exception e) { // TODO: handle exception
+	 * e.printStackTrace(); }
+	 * 
+	 * return mi_producto.getSeccion(); }
+	 */
 
-		Connection acceso_BBDD = mi_conexion.getConexion();
-
+	public ResultSet ejecuta_consultas() {
+		Connection accessoBBDD = mi_conexion.getConexion();
 		try {
-			Statement secciones = acceso_BBDD.createStatement();
-
-			rs = secciones.executeQuery("SELECT DISTINCT SECCIÓN FROM productos");
-
-			while (rs.next()) {
-				mi_producto = new Productos();
-
-				mi_producto.setSeccion(rs.getString(1));
-				return mi_producto.getSeccion();
-			}
-
-			rs.close();
+			Statement secciones = accessoBBDD.createStatement();
+			return rs = secciones.executeQuery("SELECT DISTINCTROW SECCIÓN FROM PRODUCTOS");
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 
-		return mi_producto.getSeccion();
+		return null;
 	}
 }

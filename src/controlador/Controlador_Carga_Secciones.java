@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.event.*;
+import java.sql.*;
 
 import modelo.*;
 import vista.*;
@@ -15,16 +16,33 @@ public class Controlador_Carga_Secciones extends WindowAdapter {
 	}
 
 	public void windowOpened(WindowEvent e) {
-		this.obj.ejecuta_consultas();
+		ResultSet res = null;
 
 		try {
-			while (obj.rs.next()) {
-				this.el_marco.secciones.addItem(obj.rs.getString(1));
+			res = obj.ejecuta_consultas();
+
+			while (res.next()) {
+				el_marco.secciones.addItem(res.getString(1));
 			}
-		} catch (Exception e2) {
-			// TODO: handle exception
-			e2.printStackTrace();
+
+			res.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
 		}
 	}
+
+	// PROFE
+//	public void windowOpened(WindowEvent e) {
+//		this.obj.ejecuta_consultas();
+//
+//		try {
+//			while (obj.rs.next()) {
+//				this.el_marco.secciones.addItem(obj.rs.getString(1));
+//			}
+//		} catch (Exception e2) {
+//			// TODO: handle exception
+//			e2.printStackTrace();
+//		}
+//	}
 
 }
