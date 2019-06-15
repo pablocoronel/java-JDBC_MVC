@@ -2,6 +2,7 @@ package principal;
 
 import javax.swing.JFrame;
 
+import modelo.Carga_Menues;
 import vista.Marco_Aplicacion_MVC;
 
 public class Ejecuta_MVC {

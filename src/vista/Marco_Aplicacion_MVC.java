@@ -6,7 +6,7 @@ import controlador.*;
 
 public class Marco_Aplicacion_MVC extends JFrame {
 	public JComboBox<String> secciones;
-	private JComboBox<String> paises;
+	public JComboBox<String> paises;
 	private JTextArea resultado;
 
 	public Marco_Aplicacion_MVC() {
@@ -54,7 +54,7 @@ public class Marco_Aplicacion_MVC extends JFrame {
 		/**
 		 * a la escucha
 		 */
-		addWindowListener(new Controlador_Carga_Secciones(this));
+		addWindowListener(new Controlador_Carga_Menues(this));
 	}
 
 }
