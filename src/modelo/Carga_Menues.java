@@ -31,6 +31,8 @@ public class Carga_Menues {
 
 			rs.close();
 			rs_2.close();
+			
+			acceso_BBDD.close();
 
 		} catch (Exception e) {
 			// TODO: handle exception

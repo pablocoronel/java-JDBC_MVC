@@ -7,7 +7,7 @@ import controlador.*;
 public class Marco_Aplicacion_MVC extends JFrame {
 	public JComboBox<String> secciones;
 	public JComboBox<String> paises;
-	private JTextArea resultado;
+	public JTextArea resultado;
 
 	public Marco_Aplicacion_MVC() {
 
@@ -52,7 +52,12 @@ public class Marco_Aplicacion_MVC extends JFrame {
 		add(botonConsulta, BorderLayout.SOUTH);
 
 		/**
-		 * a la escucha
+		 * escucha si se apreta el boton de consulta
+		 */
+		botonConsulta.addActionListener(new Controlador_Boton_Ejecuta(this));
+
+		/**
+		 * a la escucha de apertura de la aplicacion
 		 */
 		addWindowListener(new Controlador_Carga_Menues(this));
 	}
