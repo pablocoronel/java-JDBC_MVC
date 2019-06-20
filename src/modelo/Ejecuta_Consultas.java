@@ -6,8 +6,15 @@ public class Ejecuta_Consultas {
 
 	private Conexion mi_conexion;
 	private ResultSet rs;
+
 	private PreparedStatement enviaConsultaSeccion;
 	private final String consulta_seccion = "SELECT NOMBRE_ARTÍCULO, SECCIÓN, PRECIO, PAÍS_DE_ORIGEN FROM productos WHERE SECCIÓN = ?";
+
+	private PreparedStatement enviaConsultaPais;
+	private final String consulta_pais = "SELECT NOMBRE_ARTÍCULO, SECCIÓN, PRECIO, PAÍS_DE_ORIGEN FROM productos WHERE PAÍS_DE_ORIGEN = ?";
+
+	private PreparedStatement enviaConsultaTodos;
+	private final String consulta_todos = "SELECT NOMBRE_ARTÍCULO, SECCIÓN, PRECIO, PAÍS_DE_ORIGEN FROM productos WHERE SECCIÓN = ? AND PAÍS_DE_ORIGEN = ?";
 
 	// constructor
 	public Ejecuta_Consultas() {
@@ -27,15 +34,16 @@ public class Ejecuta_Consultas {
 				rs = enviaConsultaSeccion.executeQuery();
 			} else if (seccion.equals("Todos") && !pais.equals("Todos")) {
 
-				enviaConsultaSeccion = conecta.prepareStatement(consulta_seccion);
-				enviaConsultaSeccion.setString(1, seccion);
+				enviaConsultaPais = conecta.prepareStatement(consulta_pais);
+				enviaConsultaPais.setString(1, pais);
 
-				rs = enviaConsultaSeccion.executeQuery();
+				rs = enviaConsultaPais.executeQuery();
 			} else {
-				enviaConsultaSeccion = conecta.prepareStatement(consulta_seccion);
-				enviaConsultaSeccion.setString(1, seccion);
+				enviaConsultaTodos = conecta.prepareStatement(consulta_todos);
+				enviaConsultaTodos.setString(1, seccion);
+				enviaConsultaTodos.setString(2, pais);
 
-				rs = enviaConsultaSeccion.executeQuery();
+				rs = enviaConsultaTodos.executeQuery();
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
