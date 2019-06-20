@@ -1,17 +1,47 @@
 package modelo;
 
-public class Ejecuta_Consultas {
-	private String pruebas = "";
+import java.sql.*;
 
-	public String filtra_BBDD(String seccion, String pais) {
-		if (!seccion.equals("Todos") && pais.equals("Todos")) {
-			pruebas = "Elegiste una seccion";
-		} else if (seccion.equals("Todos") && !pais.equals("Todos")) {
-			pruebas = "Elegiste un pais";
-		} else {
-			pruebas = "Ambos";
+public class Ejecuta_Consultas {
+
+	private Conexion mi_conexion;
+	private ResultSet rs;
+	private PreparedStatement enviaConsultaSeccion;
+	private final String consulta_seccion = "SELECT NOMBRE_ARTÍCULO, SECCIÓN, PRECIO, PAÍS_DE_ORIGEN FROM productos WHERE SECCIÓN = ?";
+
+	// constructor
+	public Ejecuta_Consultas() {
+		this.mi_conexion = new Conexion();
+	}
+
+	// hacer la consulta
+	public ResultSet filtra_BBDD(String seccion, String pais) {
+		Connection conecta = this.mi_conexion.getConexion();
+		rs = null;
+
+		try {
+			if (!seccion.equals("Todos") && pais.equals("Todos")) {
+				enviaConsultaSeccion = conecta.prepareStatement(consulta_seccion);
+				enviaConsultaSeccion.setString(1, "CERÁMICA");
+
+				rs = enviaConsultaSeccion.executeQuery();
+			} else if (seccion.equals("Todos") && !pais.equals("Todos")) {
+
+				enviaConsultaSeccion = conecta.prepareStatement(consulta_seccion);
+				enviaConsultaSeccion.setString(1, seccion);
+
+				rs = enviaConsultaSeccion.executeQuery();
+			} else {
+				enviaConsultaSeccion = conecta.prepareStatement(consulta_seccion);
+				enviaConsultaSeccion.setString(1, seccion);
+
+				rs = enviaConsultaSeccion.executeQuery();
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 
-		return pruebas;
+		return rs;
 	}
 }

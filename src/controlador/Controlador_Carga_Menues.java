@@ -1,7 +1,6 @@
 package controlador;
 
 import java.awt.event.*;
-import java.sql.*;
 
 import modelo.*;
 import vista.*;
@@ -24,7 +23,7 @@ public class Controlador_Carga_Menues extends WindowAdapter {
 			while (obj.rs.next()) {
 				this.el_marco.secciones.addItem(obj.rs.getString(1));
 			}
-			
+
 			// paises
 			while (obj.rs_2.next()) {
 				this.el_marco.paises.addItem(obj.rs_2.getString(1));
